@@ -13,7 +13,7 @@ Html_file = open("report.html","w")
 Html_file.write(html_out)
 Html_file.close()
 
-pdfkit.from_string('html_out', 'report1.pdf')
-pdfkit.from_file('report.html', 'report.pdf')
+options = {'enable-local-file-access': None}
+pdfkit.from_file('report.html', 'report.pdf',options = options)
 
 
