@@ -12,4 +12,4 @@ fsleyes render --scene ortho --xcentre  0.00000  0.00000 --ycentre  0.00000  0.0
 
 RESAMPLEAR LESIÓN EN SWAN
 
-./WarpImageMultiTransform 3 /Users/enrique/GitHubProjects/tfg/4Enrique/Lesion_T2_PO_1D_W.nii.gz /Users/enrique/GitHubProjects/tfg/4Enrique/Lesion_FLAIR_PO_1D_W.nii.gz -R /Users/enrique/GitHubProjects/tfg/4Enrique/SWI_PO.nii.gz --use-NN --reslice-by-header
+./WarpImageMultiTransform 3 /Users/enrique/GitHubProjects/tfg/4Enrique/Lesion_T2_PO_1D_W.nii.gz /Users/enrique/GitHubProjects/tfg/4Enrique/Lesion_SWAN_PO_1D_W.nii.gz -R /Users/enrique/GitHubProjects/tfg/4Enrique/SWI_PO.nii.gz --use-NN --reslice-by-header
