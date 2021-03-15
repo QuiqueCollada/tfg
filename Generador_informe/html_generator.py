@@ -3,6 +3,7 @@ import pdfkit
 import os
 from PIL import Image 
 
+# Convertimos con fsleyes la imagen NIFTI en PNG aplicando la máscara de la lesión.
 os.system(f'fsleyes render --scene ortho --xcentre  0.00000  0.00000 --ycentre  0.00000  0.00000 --zcentre  0.00000  0.00000 --xzoom 1100.0 --yzoom 1100.0 --zzoom 1100.0 --layout horizontal -hl --performance 3 --movieSync --hideCursor --outfile /Users/enrique/GitHubProjects/tfg/4Enrique/ImagenT2.png --voxelLoc 283 260 35 /Users/enrique/GitHubProjects/tfg/4Enrique/T2_PO.nii.gz --name "T2_PO.nii.gz" --overlayType volume  --cmap greyscale --displayRange 1.0 1000.0 --cmapResolution 256 --interpolation linear /Users/enrique/GitHubProjects/tfg/4Enrique/Lesion_T2_PO_1D_W.nii.gz --overlayType mask --maskColour 1.0 0.0 0.0 --outline --interpolation linear')
 os.system(f'fsleyes render --scene ortho --xcentre  0.00000  0.00000 --ycentre  0.00000  0.00000 --zcentre  0.00000  0.00000 --xzoom 820.0 --yzoom 820.0 --zzoom 820.0 --layout horizontal -hl --performance 3 --movieSync --hideCursor --outfile /Users/enrique/GitHubProjects/tfg/Img_lesion/ImagenT1.png --voxelLoc 110 112 135 /Users/enrique/GitHubProjects/tfg/Img_lesion/T1_PO.nii.gz --name "T2_PO.nii.gz" --overlayType volume  --cmap greyscale --displayRange 30.0 450.0 --cmapResolution 256 --interpolation linear /Users/enrique/GitHubProjects/tfg/Img_lesion/Lesion_T1_PO_1D_W.nii.gz --overlayType mask --maskColour 1.0 0.0 0.0 --outline --interpolation linear')
 os.system(f'fsleyes render --scene ortho --xcentre  0.00000  0.00000 --ycentre  0.00000  0.00000 --zcentre  0.00000  0.00000 --xzoom 820.0 --yzoom 820.0 --zzoom 820.0 --layout horizontal -hl --performance 3 --movieSync --hideCursor --outfile /Users/enrique/GitHubProjects/tfg/Img_lesion/ImagenSWAN.png --voxelLoc 289 235 61 /Users/enrique/GitHubProjects/tfg/Img_lesion/SWI_PO.nii.gz --name "T2_PO.nii.gz" --overlayType volume  --cmap greyscale --displayRange 2.0 2000.0 --cmapResolution 256 --interpolation linear /Users/enrique/GitHubProjects/tfg/Img_lesion/Lesion_SWAN_PO_1D_W.nii.gz --overlayType mask --maskColour 1.0 0.0 0.0 --outline --interpolation linear')
@@ -32,11 +33,23 @@ imSWANcr.save("ImagenSWAN_crop.png")
 imFLAIRcr = imFLAIR.crop((x1, y1, x2, y2))
 imFLAIRcr.save("ImagenFLAIR_crop.png")
 
+#Creamos una imagen en mosaico en T2, la cortamos y la guardamos.
+os.system(f'fsleyes render --scene lightbox --zaxis 2 --sliceSpacing 6.219999999324791 --zrange 32.619983627262215 163.6599188131839 --ncols 4 --nrows 5 --bgColour 0.0 0.0 0.0 --fgColour 0.0 0.0 0.0 --movieSync --hideCursor --outfile /Users/enrique/GitHubProjects/tfg/Img_lesion/mosaicoT2.png /Users/enrique/GitHubProjects/tfg/Img_lesion/T2_PO.nii.gz --name "T2_PO.nii.gz" --overlayType volume  --cmap greyscale --displayRange 1.0 1000.0 --cmapResolution 256 --interpolation linear /Users/enrique/GitHubProjects/tfg/Img_lesion/Lesion_T2_PO_1D_W.nii.gz --overlayType mask --maskColour 1.0 0.0 0.0 --outline --interpolation linear')
+im_mosaicoT2 = Image.open("/Users/enrique/GitHubProjects/tfg/Img_lesion/mosaicoT2.png")
+
+# Setting the points for cropped image 
+x1 = 165
+y1 = 0
+x2 = 800 - 165
+y2 = 600
+
+imMosaicoT2cr = im_mosaicoT2.crop((x1, y1, x2, y2))
+imMosaicoT2cr.save("MosaicoT2_crop.png")
 
 env = Environment(loader=FileSystemLoader('.'))
 template = env.get_template("myreport.html")
 
-template_vars = {"title" : "Lesión Paciente X","imagenT2" : "ImagenT2_crop.png", "imagenT1" : "ImagenT1_crop.png", "imagenSWAN" : "ImagenSWAN_crop.png","imagenFLAIR" : "ImagenFLAIR_crop.png","Autor" : "Enrique"}
+template_vars = {"title" : "Lesión Paciente X","imagenT2" : "ImagenT2_crop.png", "imagenT1" : "ImagenT1_crop.png", "imagenSWAN" : "ImagenSWAN_crop.png","imagenFLAIR" : "ImagenFLAIR_crop.png","mosaicoT2" : "MosaicoT2_crop.png","Autor" : "Enrique"}
 
 html_out = template.render(template_vars)
 #print(html_out)
