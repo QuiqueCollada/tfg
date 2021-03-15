@@ -1,0 +1,19 @@
+IMAGEN EN T2:
+
+fsleyes render --scene ortho --xcentre  0.00000  0.00000 --ycentre  0.00000  0.00000 --zcentre  0.00000  0.00000 --xzoom 1100.0 --yzoom 1100.0 --zzoom 1100.0 --layout horizontal -hl --performance 3 --movieSync --hideCursor --outfile /Users/enrique/GitHubProjects/tfg/Img_lesion/ImagenT2.png --voxelLoc 283 260 35 /Users/enrique/GitHubProjects/tfg/Img_lesion/T2_PO.nii.gz --name "T2_PO.nii.gz" --overlayType volume  --cmap greyscale --displayRange 1.0 1000.0 --cmapResolution 256 --interpolation linear /Users/enrique/GitHubProjects/tfg/Img_lesion/Lesion_T2_PO_1D_W.nii.gz --overlayType mask --maskColour 1.0 0.0 0.0 --outline --interpolation linear
+
+RESAMPLEAR LESIÓN EN T1
+
+./WarpImageMultiTransform 3 /Users/enrique/GitHubProjects/tfg/Img_lesion/Lesion_T2_PO_1D_W.nii.gz /Users/enrique/GitHubProjects/tfg/Img_lesion/Lesion_T1_PO_1D_W.nii.gz -R /Users/enrique/GitHubProjects/tfg/Img_lesion/T1_PO.nii.gz --use-NN --reslice-by-header
+
+IMAGEN EN T1:
+
+fsleyes render --scene ortho --xcentre  0.00000  0.00000 --ycentre  0.00000  0.00000 --zcentre  0.00000  0.00000 --xzoom 820.0 --yzoom 820.0 --zzoom 820.0 --layout horizontal -hl --performance 3 --movieSync --hideCursor --outfile /Users/enrique/GitHubProjects/tfg/Img_lesion/ImagenT1.png --voxelLoc 110 116 129 /Users/enrique/GitHubProjects/tfg/Img_lesion/T1_PO.nii.gz --name "T2_PO.nii.gz" --overlayType volume  --cmap greyscale --displayRange 30.0 300.0 --cmapResolution 256 --interpolation linear /Users/enrique/GitHubProjects/tfg/Img_lesion/Lesion_T1_PO_1D_W.nii.gz --overlayType mask --maskColour 1.0 0.0 0.0 --outline --interpolation linear
+
+RESAMPLEAR LESIÓN EN SWAN
+
+./WarpImageMultiTransform 3 /Users/enrique/GitHubProjects/tfg/Img_lesion/Lesion_T2_PO_1D_W.nii.gz /Users/enrique/GitHubProjects/tfg/Img_lesion/Lesion_SWAN_PO_1D_W.nii.gz -R /Users/enrique/GitHubProjects/tfg/Img_lesion/SWI_PO.nii.gz --use-NN --reslice-by-header
+
+MOSAICO T2:
+
+fsleyes render --scene lightbox --zaxis 2 --sliceSpacing 6.219999999324791 --zrange 32.619983627262215 163.6599188131839 --ncols 4 --nrows 5 --showGridLines --bgColour 0.0 0.0 0.0 --fgColour 0.0 0.0 0.0 --movieSync --hideCursor --outfile /Users/enrique/GitHubProjects/tfg/Img_lesion/mosaicoT2.png /Users/enrique/GitHubProjects/tfg/Img_lesion/T2_PO.nii.gz --name "T2_PO.nii.gz" --overlayType volume  --cmap greyscale --displayRange 1.0 1000.0 --cmapResolution 256 --interpolation linear /Users/enrique/GitHubProjects/tfg/Img_lesion/Lesion_T2_PO_1D_W.nii.gz --overlayType mask --maskColour 1.0 0.0 0.0 --outline --interpolation linear
