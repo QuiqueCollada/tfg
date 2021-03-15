@@ -16,7 +16,7 @@ RESAMPLEAR LESIÓN EN SWAN
 
 IMAGEN EN SWAN:
 
-fsleyes render --scene ortho --xcentre  0.00000  0.00000 --ycentre  0.00000  0.00000 --zcentre  0.00000  0.00000 --xzoom 820.0 --yzoom 820.0 --zzoom 820.0 --layout horizontal -hl --performance 3 --movieSync --hideCursor --outfile /Users/enrique/GitHubProjects/tfg/Img_lesion/ImagenSWAN.png --voxelLoc 289 235 61 /Users/enrique/GitHubProjects/tfg/Img_lesion/SWI_PO.nii.gz --name "T2_PO.nii.gz" --overlayType volume  --cmap greyscale --displayRange 30.0 450.0 --cmapResolution 256 --interpolation linear /Users/enrique/GitHubProjects/tfg/Img_lesion/Lesion_SWAN_PO_1D_W.nii.gz --overlayType mask --maskColour 1.0 0.0 0.0 --outline --interpolation linear
+fsleyes render --scene ortho --xcentre  0.00000  0.00000 --ycentre  0.00000  0.00000 --zcentre  0.00000  0.00000 --xzoom 820.0 --yzoom 820.0 --zzoom 820.0 --layout horizontal -hl --performance 3 --movieSync --hideCursor --outfile /Users/enrique/GitHubProjects/tfg/Img_lesion/ImagenSWAN.png --voxelLoc 289 235 61 /Users/enrique/GitHubProjects/tfg/Img_lesion/SWI_PO.nii.gz --name "T2_PO.nii.gz" --overlayType volume  --cmap greyscale --displayRange 2.0 2000.0 --cmapResolution 256 --interpolation linear /Users/enrique/GitHubProjects/tfg/Img_lesion/Lesion_SWAN_PO_1D_W.nii.gz --overlayType mask --maskColour 1.0 0.0 0.0 --outline --interpolation linear
 
 RESAMPLEAR LESIÓN EN FLAIR
 
@@ -24,7 +24,7 @@ RESAMPLEAR LESIÓN EN FLAIR
 
 IMAGEN EN FLAIR:
 
-fsleyes render --scene ortho --xcentre  0.00000  0.00000 --ycentre  0.00000  0.00000 --zcentre  0.00000  0.00000 --xzoom 820.0 --yzoom 820.0 --zzoom 820.0 --layout horizontal -hl --performance 3 --movieSync --hideCursor --outfile /Users/enrique/GitHubProjects/tfg/Img_lesion/ImagenSWAN.png --voxelLoc 289 222 14 /Users/enrique/GitHubProjects/tfg/Img_lesion/SWI_PO.nii.gz --name "T2_PO.nii.gz" --overlayType volume  --cmap greyscale --displayRange 30.0 450.0 --cmapResolution 256 --interpolation linear /Users/enrique/GitHubProjects/tfg/Img_lesion/Lesion_SWAN_PO_1D_W.nii.gz --overlayType mask --maskColour 1.0 0.0 0.0 --outline --interpolation linear
+fsleyes render --scene ortho --xcentre  0.00000  0.00000 --ycentre  0.00000  0.00000 --zcentre  0.00000  0.00000 --xzoom 820.0 --yzoom 820.0 --zzoom 820.0 --layout horizontal -hl --performance 3 --movieSync --hideCursor --outfile /Users/enrique/GitHubProjects/tfg/Img_lesion/ImagenFLAIR.png --voxelLoc 289 222 14 /Users/enrique/GitHubProjects/tfg/Img_lesion/SWI_PO.nii.gz --name "T2_PO.nii.gz" --overlayType volume  --cmap greyscale --displayRange 20.0 1900.0 --cmapResolution 256 --interpolation linear /Users/enrique/GitHubProjects/tfg/Img_lesion/Lesion_SWAN_PO_1D_W.nii.gz --overlayType mask --maskColour 1.0 0.0 0.0 --outline --interpolation linear
 
 MOSAICO T2:
 
