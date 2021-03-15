@@ -67,7 +67,10 @@ fsleyes render --scene lightbox --zaxis 2 --sliceSpacing 6.219999999324791 --zra
 
 fsleyes render --scene lightbox --zaxis 2 --sliceSpacing 6.219999999324791 --zrange 32.619983627262215 163.6599188131839 --ncols 5 --nrows 5 --showGridLines --bgColour 1.0 1.0 1.0 --fgColour 0.0 0.0 0.0 --xzoom 1100.0 --yzoom 1100.0 --zzoom 1100.0 --movieSync --hideCursor --outfile prueba24.png T2_PO.nii.gz Lesion_T2_PO_1D_W.nii.gz --overlayType volume --alpha 90.0  --cmap brain_colours_actc --displayRange 0.1 2.0 --cmapResolution 256 --interpolation linear
 
-fsleyes render --scene lightbox --zaxis 2 --sliceSpacing 6.219999999324791 --zrange 32.619983627262215 163.6599188131839 --ncols 5 --nrows 5 --showGridLines --bgColour 1.0 1.0 1.0 --fgColour 0.0 0.0 0.0 --movieSync --hideCursor --outfile prueba25.png T2_PO.nii.gz --name "T2_PO.nii.gz" --overlayType volume  --cmap greyscale --displayRange 1.0 1000.0 --cmapResolution 256 --interpolation linear Lesion_T2_PO_1D_W.nii.gz --overlayType volume --alpha 90.0  --cmap brain_colours_actc --displayRange 0.1 2.0 --cmapResolution 256 --interpolation linear
+fsleyes render --scene lightbox --zaxis 2 --sliceSpacing 6.219999999324791 --zrange 32.619983627262215 163.6599188131839 --ncols 4 --nrows 5 --showGridLines --bgColour 0.0 0.0 0.0 --fgColour 0.0 0.0 0.0 --movieSync --hideCursor --outfile prueba25.png T2_PO.nii.gz --name "T2_PO.nii.gz" --overlayType volume  --cmap greyscale --displayRange 1.0 1000.0 --cmapResolution 256 --interpolation linear Lesion_T2_PO_1D_W.nii.gz --overlayType volume --alpha 90.0  --cmap brain_colours_actc --displayRange 0.1 2.0 --cmapResolution 256 --interpolation linear
+
+fsleyes render --scene lightbox --zaxis 2 --sliceSpacing 6.219999999324791 --zrange 32.619983627262215 163.6599188131839 --ncols 4 --nrows 5 --showGridLines --bgColour 0.0 0.0 0.0 --fgColour 0.0 0.0 0.0 --movieSync --hideCursor --outfile prueba26.png T2_PO.nii.gz --name "T2_PO.nii.gz" --overlayType volume  --cmap greyscale --displayRange 1.0 1000.0 --cmapResolution 256 --interpolation linear Lesion_T2_PO_1D_W.nii.gz --overlayType mask --maskColour 1.0 0.0 0.0 --outline --interpolation linear
+
 
 
 
