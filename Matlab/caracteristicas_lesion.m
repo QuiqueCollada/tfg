@@ -5,7 +5,12 @@ hdr = load_nifti(path);
 
 vol = sum(hdr.vol(:));
 hdr.pixdim
-prod(hdr.pixdim(1:3)) * vol
+prod(hdr.pixdim(2:4)) * vol
 
-s = regionprops(hdr,'centroid');
+BW = imread('/Users/enrique/GitHubProjects/tfg/Img_lesion/ImagenT2.png');
 
+s = regionprops(BW,'centroid');
+centroids = cat(1,s.Centroid);
+
+s = regionprops(BW,'boundingbox');
+boundingbox = cat(1,s.BoundingBox);
