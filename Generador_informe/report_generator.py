@@ -18,7 +18,6 @@ y2 = 600 - 130
 # (It will not change orginal image) 
 imT2cr = imT2.crop((x1, y1, x2, y2))
 imT2cr.save("ImagenT2_crop.png")
-#im1.show()
 imT1cr = imT1.crop((x1, y1, x2, y2))
 imT1cr.save("ImagenT1_crop.png")
 imSWANcr = imSWAN.crop((x1, y1, x2, y2))
