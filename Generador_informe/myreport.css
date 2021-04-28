@@ -1,3 +1,12 @@
+document_title
+{
+	color: black;
+	font-family: verdana;
+	font-size: 200%;
+  	font-weight: bold;
+  	text-align: center;
+}
+
 figure
 {
     margin:0; 

@@ -40,7 +40,7 @@ imMosaicoT2cr.save("MosaicoT2_crop.png")
 env = Environment(loader=FileSystemLoader('.'))
 template = env.get_template("myreport.html")
 
-template_vars = {"title" : "Lesión Paciente X","imagenT2" : "ImagenT2_crop.png", "imagenT1" : "ImagenT1_crop.png", "imagenSWAN" : "ImagenSWAN_crop.png","imagenFLAIR" : "ImagenFLAIR_crop.png","mosaicoT2" : "MosaicoT2_crop.png","Autor" : "Enrique"}
+template_vars = {"document_title": "Informe automatizado de topografía de la lesión talámica mediante ultrasonido focal de alta intensidad", "title" : "Lesión Paciente X","imagenT2" : "ImagenT2_crop.png", "imagenT1" : "ImagenT1_crop.png", "imagenSWAN" : "ImagenSWAN_crop.png","imagenFLAIR" : "ImagenFLAIR_crop.png","mosaicoT2" : "MosaicoT2_crop.png","Autor" : "Enrique"}
 
 html_out = template.render(template_vars)
 #print(html_out)
