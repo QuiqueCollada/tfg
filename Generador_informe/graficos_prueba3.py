@@ -1,17 +1,16 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df = pd.read_csv("caracteristicas_mejoria3.csv")
+df = pd.read_csv('caracteristicas_mejoria6.csv')
 
+df['volumen'] = df['volumen'].str.replace(',', '.').astype(float)
+df['mejoria'] = df['mejoria'].str.replace(',', '.').replace('%','',regex=True).astype(float)
+df.apply(pd.to_numeric)
 print(df)
 
-df.plot(kind = 'scatter', x = 'volumen', y = 'mejoria')
+x = df["volumen"]
+print(x)
+y = df["mejoria"]
 
-x = df.volumen
-y = df.mejoria
-
-#plt.scatter(x,y)
-
-plt.title("Relación entre el volumen y la mejoría clínica")
-
+plt.scatter(x,y)
 plt.show()
