@@ -26,7 +26,10 @@ imFLAIRcr = imFLAIR.crop((x1, y1, x2, y2))
 imFLAIRcr.save("ImagenFLAIR_crop.png")
 
 # Opens a image in RGB mode
+im_mosaicoT1 = Image.open("/Users/enrique/GitHubProjects/tfg/Img_lesion/mosaicoT1.png")
 im_mosaicoT2 = Image.open("/Users/enrique/GitHubProjects/tfg/Img_lesion/mosaicoT2.png")
+im_mosaicoFLAIR = Image.open("/Users/enrique/GitHubProjects/tfg/Img_lesion/mosaicoFLAIR.png")
+im_mosaicoSWAN = Image.open("/Users/enrique/GitHubProjects/tfg/Img_lesion/mosaicoSWAN.png")
 
 # Setting the points for cropped image 
 x3 = 165
@@ -34,13 +37,19 @@ y3 = 0
 x4 = 800 - 165
 y4 = 600
 
+imMosaicoT1cr = im_mosaicoT1.crop((x3, y3, x4, y4))
+imMosaicoT1cr.save("MosaicoT1_crop.png")
 imMosaicoT2cr = im_mosaicoT2.crop((x3, y3, x4, y4))
 imMosaicoT2cr.save("MosaicoT2_crop.png")
+imMosaicoFLAIRcr = im_mosaicoFLAIR.crop((x3, y3, x4, y4))
+imMosaicoFLAIRcr.save("MosaicoFLAIR_crop.png")
+imMosaicoSWANcr = im_mosaicoSWAN.crop((x3, y3, x4, y4))
+imMosaicoSWANcr.save("MosaicoSWAN_crop.png")
 
 env = Environment(loader=FileSystemLoader('.'))
 template = env.get_template("myreport.html")
 
-template_vars = {"document_title": "Informe automatizado de topografía de la lesión talámica mediante ultrasonido focal de alta intensidad", "title" : "Lesión Paciente X","imagenT2" : "ImagenT2_crop.png", "imagenT1" : "ImagenT1_crop.png", "imagenSWAN" : "ImagenSWAN_crop.png","imagenFLAIR" : "ImagenFLAIR_crop.png","mosaicoT2" : "MosaicoT2_crop.png","Autor" : "Enrique"}
+template_vars = {"document_title": "Informe automatizado de topografía de la lesión talámica mediante ultrasonido focal de alta intensidad", "title" : "Lesión Paciente X","imagenT2" : "ImagenT2_crop.png", "imagenT1" : "ImagenT1_crop.png", "imagenSWAN" : "ImagenSWAN_crop.png","imagenFLAIR" : "ImagenFLAIR_crop.png","mosaicoT2" : "MosaicoT2_crop.png","mosaicoT1" : "MosaicoT1_crop.png","mosaicoFLAIR" : "MosaicoFLAIR_crop.png","mosaicoSWAN" : "MosaicoSWAN_crop.png","Autor" : "Enrique"}
 
 html_out = template.render(template_vars)
 #print(html_out)
