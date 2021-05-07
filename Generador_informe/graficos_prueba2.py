@@ -1,6 +1,7 @@
 import pandas as pd
 from matplotlib import pyplot as plt
 import numpy as np
+import seaborn as sns
 
 
 plt.style.use('seaborn')
@@ -8,6 +9,9 @@ plt.style.use('seaborn')
 df = pd.read_csv("caracteristicas_mejoria_americano.csv", sep=";")
 df = df.apply(pd.to_numeric)
 volumen = df['volumen']
+centroide_x = df['centroide_x']
+centroide_y = df['centroide_y']
+centroide_z = df['centroide_z']
 mejoria = df['mejoria']
 
 # Ordeno los valores
@@ -31,4 +35,9 @@ plt.xlabel('Volumen (mm3)')
 plt.tight_layout()
 
 plt.savefig('./Graficos/figure1.png')
-plt.show()
+#plt.show()
+
+#sns.kdeplot(centroide_x,shade=True)
+#plt.savefig('./Graficos/figure2.png')
+#plt.show()
+

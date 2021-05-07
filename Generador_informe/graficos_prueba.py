@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-df = pd.read_csv("caracteristicas_mejoria5.csv")
+df = pd.read_csv("outstats.txt")
 
 #print(df.head())
 
