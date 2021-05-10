@@ -1,0 +1,2 @@
+id,natvol,diamx,diamy,diamz,latICL,dPC,dPCPerc,dInfACPC,VIMoccupied,LesioninVIM
+005,270.5222,9,8,11,10.2727,6.7188,26.6838,0.8097,6.7194,10.7822
