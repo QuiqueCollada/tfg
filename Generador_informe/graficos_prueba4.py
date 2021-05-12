@@ -23,10 +23,17 @@ mejoria_abs = df['Mejoria_Abs_HT']
 mejoria_rel = df['Mejoria_Rel_HT']
 
     # DISEÑO 1
-sns.set_context("paper", font_scale=1.4)
+sns.set_context("paper", font_scale=1.1)
 #plt.xticks(rotation=20)
 plt.title("Relación entre el volumen de la lesión y la mejoría clínica en unidades relativas")
-bplot1 = sns.scatterplot(volumen,mejoria_rel, edgecolor='black',linewidth=1,alpha=0.75)
+x = volumen
+y = mejoria_rel
+bplot1 = sns.scatterplot(x,y, edgecolor='black',linewidth=1,alpha=0.75)
+
+# Destaco el punto del paciente sobre el que estoy haciendo el informe
+x1 = 270.5222
+y1= 47.61904762
+bplot1 = sns.scatterplot(x1,y1, color = 'red', edgecolor='black',linewidth=1,alpha=0.75)
 
 # Añado etiquetas a los ejes x e y
 bplot1.set(ylabel='Mejoría (%)')
@@ -37,7 +44,8 @@ bplot1.figure.savefig('./Graficos/figure1.png')
 bplot1.remove()
 
 plt.title("Relación entre el volumen de la lesión y la mejoría clínica en unidades absolutas")
-bplot1 = sns.scatterplot(volumen,mejoria_abs, edgecolor='black',linewidth=1,alpha=0.75)
+y = mejoria_abs
+bplot1 = sns.scatterplot(x,y, edgecolor='black',linewidth=1,alpha=0.75)
 
 # Añado etiquetas a los ejes x e y
 bplot1.set(ylabel='Mejoría')
