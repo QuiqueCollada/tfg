@@ -4,7 +4,7 @@ fsleyes render --scene ortho --xcentre  0.00000  0.00000 --ycentre  0.00000  0.0
 
 RESAMPLEAR LESIÓN EN T1
 
-./WarpImageMultiTransform 3 /Users/enrique/GitHubProjects/tfg/Img_lesion/Lesion_T2_PO_1D_W.nii.gz /Users/enrique/GitHubProjects/tfg/Img_lesion/Lesion_T1_PO_1D_W.nii.gz -R /Users/enrique/GitHubProjects/tfg/Img_lesion/T1_PO.nii.gz --use-NN --reslice-by-header
+/Users/enrique/ANTs_Main/install/bin/WarpImageMultiTransform 3 /Users/enrique/GitHubProjects/tfg/Img_lesion/Lesion_T2_PO_1D_W.nii.gz /Users/enrique/GitHubProjects/tfg/Img_lesion/Lesion_T1_PO_1D_W.nii.gz -R /Users/enrique/GitHubProjects/tfg/Img_lesion/T1_PO.nii.gz --use-NN --reslice-by-header
 
 IMAGEN EN T1:
 
