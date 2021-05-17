@@ -59,6 +59,12 @@ dfp = pd.read_csv('/Users/enrique/GitHubProjects/HIFU_VIM_Topografia_AutoReport/
 
 # Cargo en variables las columnas que deseo comparar
 volp = dfp['natvol'].iloc[0]
+dPCp = dfp['dPC'].iloc[0]
+latICLp = dfp['latICL'].iloc[0]
+dPCPercp = dfp['dPCPerc'].iloc[0]
+dInfACPCp = dfp['dInfACPC'].iloc[0]
+VIMoccupiedp = dfp['VIMoccupied'].iloc[0]
+LesioninVIMp = dfp['LesioninVIM'].iloc[0]
 
 # Leo los ficheros csv con información del otros pacientes
 df1 = pd.read_csv('outstats.txt')
@@ -76,12 +82,18 @@ df = pd.read_excel('fichero_unico.xlsx')
 
 # Cargo las características de la lesión que voy a comparar con la mejoría clínica
 volumen = df['natvol']
+dPC = df['dPC']
+latICL = df['latICL']
+dPCPerc = df['dPCPerc']
+dInfACPC = df['dInfACPC']
+VIMoccupied = df['VIMoccupied']
+LesioninVIM = df['LesioninVIM']
 
 # Cargo las columnas de mejoría clínica (en unidades absolutas y relativas)
 mejoria_abs = df['Mejoria_Abs_HT']
 mejoria_rel = df['Mejoria_Rel_HT']
 
-# Creo una figura con 2 subplots: uno con la mejoría relativa y otro relacionado con la absoluta
+# Creo una figura con 2 subplots, relacionado el volumen con la mejoría relativa y con la absoluta
 fig = plt.figure(figsize=(14,6))
 ax1 = fig.add_subplot(121)
 ax2 = fig.add_subplot(122)
@@ -103,6 +115,138 @@ ax2.set_xlabel('Volumen (mm3)')
 
 # Guardo la figura en una imagen png
 plt.savefig('./Graficos/volumen_mejoria.png', dpi=200)
+
+# Figura 2: relación entre la lateralidad y la mejoría
+fig = plt.figure(figsize=(14,6))
+ax1 = fig.add_subplot(121)
+ax2 = fig.add_subplot(122)
+
+ax1.title.set_text('Relación lateralidad - mejoría clínica relativa')
+x = latICL
+y = mejoria_rel
+ax1.scatter(x,y, edgecolor='black',linewidth=1,alpha=0.75,)
+ax1.axvline(x=latICLp, color = 'red') # Dibujo una línea roja en el dato específico del paciente
+ax1.set_ylabel('Mejoría (%)')
+ax1.set_xlabel('Lateralidad (mm)')
+
+ax2.title.set_text('Relación lateralidad - mejoría clínica absoluta')
+y = mejoria_abs
+ax2.scatter(x,y, edgecolor='black',linewidth=1,alpha=0.75,)
+ax2.axvline(x=latICLp, color = 'red')
+ax2.set_ylabel('Mejoría')
+ax2.set_xlabel('Lateralidad (mm)')
+
+plt.savefig('./Graficos/lateralidad_mejoria.png', dpi=200)
+
+# Figura 3: relación entre la distancia PC y la mejoría
+fig = plt.figure(figsize=(14,6))
+ax1 = fig.add_subplot(121)
+ax2 = fig.add_subplot(122)
+
+ax1.title.set_text('Relación distancia comisura posterior - mejoría clínica relativa')
+x = dPC
+y = mejoria_rel
+ax1.scatter(x,y, edgecolor='black',linewidth=1,alpha=0.75,)
+ax1.axvline(x=dPCp, color = 'red') # Dibujo una línea roja en el dato específico del paciente
+ax1.set_ylabel('Mejoría (%)')
+ax1.set_xlabel('Distancia PC (mm)')
+
+ax2.title.set_text('Relación distancia comisura posterior - mejoría clínica absoluta')
+y = mejoria_abs
+ax2.scatter(x,y, edgecolor='black',linewidth=1,alpha=0.75,)
+ax2.axvline(x=dPCp, color = 'red')
+ax2.set_ylabel('Mejoría')
+ax2.set_xlabel('Distancia PC (mm)')
+
+plt.savefig('./Graficos/dPC_mejoria.png', dpi=200)
+
+# Figura 4: relación entre dPCPerc y la mejoría
+fig = plt.figure(figsize=(14,6))
+ax1 = fig.add_subplot(121)
+ax2 = fig.add_subplot(122)
+
+ax1.title.set_text('Porcentaje del segmento comisura anterior-posterior - mejoría relativa')
+x = dPCPerc
+y = mejoria_rel
+ax1.scatter(x,y, edgecolor='black',linewidth=1,alpha=0.75,)
+ax1.axvline(x=dPCPercp, color = 'red') # Dibujo una línea roja en el dato específico del paciente
+ax1.set_ylabel('Mejoría (%)')
+ax1.set_xlabel('Porcentaje segmento entre comisuras (%)')
+
+ax2.title.set_text('Porcentaje del segmento comisura anterior-posterior - mejoría absoluta')
+y = mejoria_abs
+ax2.scatter(x,y, edgecolor='black',linewidth=1,alpha=0.75,)
+ax2.axvline(x=dPCPercp, color = 'red')
+ax2.set_ylabel('Mejoría')
+ax2.set_xlabel('Porcentaje segmento entre comisuras (%)')
+
+plt.savefig('./Graficos/dPCperc_mejoria.png', dpi=200)
+
+# Figura 5: relación entre la distancia inferior al plano AC-PC y la mejoría
+fig = plt.figure(figsize=(14,6))
+ax1 = fig.add_subplot(121)
+ax2 = fig.add_subplot(122)
+
+ax1.title.set_text('Relación distancia inferior al plano AC-PC - mejoría clínica relativa')
+x = dInfACPC
+y = mejoria_rel
+ax1.scatter(x,y, edgecolor='black',linewidth=1,alpha=0.75,)
+ax1.axvline(x=dInfACPCp, color = 'red') # Dibujo una línea roja en el dato específico del paciente
+ax1.set_ylabel('Mejoría (%)')
+ax1.set_xlabel('Distancia inferior al plano AC-PC (mm)')
+
+ax2.title.set_text('Relación distancia inferior al plano AC-PC - mejoría clínica absoluta')
+y = mejoria_abs
+ax2.scatter(x,y, edgecolor='black',linewidth=1,alpha=0.75,)
+ax2.axvline(x=dInfACPCp, color = 'red')
+ax2.set_ylabel('Mejoría')
+ax2.set_xlabel('Distancia inferior al plano AC-PC (mm)')
+
+plt.savefig('./Graficos/dInfACPC_mejoria.png', dpi=200)
+
+# Figura 6: relación entre el porcentaje de VIM ocupado por la lesión y la mejoría
+fig = plt.figure(figsize=(14,6))
+ax1 = fig.add_subplot(121)
+ax2 = fig.add_subplot(122)
+
+ax1.title.set_text('Relación VIM ocupado - mejoría clínica relativa')
+x = VIMoccupied
+y = mejoria_rel
+ax1.scatter(x,y, edgecolor='black',linewidth=1,alpha=0.75,)
+ax1.axvline(x=VIMoccupiedp, color = 'red') # Dibujo una línea roja en el dato específico del paciente
+ax1.set_ylabel('Mejoría (%)')
+ax1.set_xlabel('VIM ocupado (%)')
+
+ax2.title.set_text('Relación VIM ocupado - mejoría clínica absoluta')
+y = mejoria_abs
+ax2.scatter(x,y, edgecolor='black',linewidth=1,alpha=0.75,)
+ax2.axvline(x=VIMoccupiedp, color = 'red')
+ax2.set_ylabel('Mejoría')
+ax2.set_xlabel('VIM ocupado (%)')
+
+plt.savefig('./Graficos/VIMoccupied_mejoria.png', dpi=200)
+
+# Figura 7: relación entre el porcentaje de lesión en el VIM por la lesión y la mejoría
+fig = plt.figure(figsize=(14,6))
+ax1 = fig.add_subplot(121)
+ax2 = fig.add_subplot(122)
+
+ax1.title.set_text('Relación lesión en VIM - mejoría clínica relativa')
+x = LesioninVIM
+y = mejoria_rel
+ax1.scatter(x,y, edgecolor='black',linewidth=1,alpha=0.75,)
+ax1.axvline(x=LesioninVIMp, color = 'red') # Dibujo una línea roja en el dato específico del paciente
+ax1.set_ylabel('Mejoría (%)')
+ax1.set_xlabel('Lesión en VIM (%)')
+
+ax2.title.set_text('Relación lesión en VIM - mejoría clínica absoluta')
+y = mejoria_abs
+ax2.scatter(x,y, edgecolor='black',linewidth=1,alpha=0.75,)
+ax2.axvline(x=LesioninVIMp, color = 'red')
+ax2.set_ylabel('Mejoría')
+ax2.set_xlabel('Lesión en VIM (%)')
+
+plt.savefig('./Graficos/LesioninVIM_mejoria.png', dpi=200)
 
 
 env = Environment(loader=FileSystemLoader('.'))
