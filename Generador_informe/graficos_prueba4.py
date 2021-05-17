@@ -30,10 +30,8 @@ x = volumen
 y = mejoria_rel
 bplot1 = sns.scatterplot(x,y, edgecolor='black',linewidth=1,alpha=0.75)
 
-# Destaco el punto del paciente sobre el que estoy haciendo el informe
-x1 = 270.5222
-y1= 47.61904762
-bplot1 = sns.scatterplot(x1,y1, color = 'red', edgecolor='black',linewidth=1,alpha=0.75)
+# Dibujo una línea vertical en el sobre el valor del volumen del paciente concreto
+plt.axvline(x=300, color = 'red')
 
 # Añado etiquetas a los ejes x e y
 bplot1.set(ylabel='Mejoría (%)')
