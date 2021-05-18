@@ -25,3 +25,7 @@ img
 {
     object-fit: cover; 
 }
+
+table {
+  width: 50%;
+}

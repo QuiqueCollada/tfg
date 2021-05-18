@@ -52,12 +52,10 @@ imMosaicoSWANcr.save("MosaicoSWAN_crop.png")
 
 # SECCIÓN 2. Inclusión de las características topográficas de la lesión en el informe.
 
-# SECCIÓN 3. Generación de los gráficos para la comparación estadística con una población de pacientes.
-
 # Cargo los datos del paciente de un fichero csv
 dfp = pd.read_csv('/Users/enrique/GitHubProjects/HIFU_VIM_Topografia_AutoReport/Lesion_Segmentation_Enrique/Topography_Report/outstats_sigle_subject.txt')
 
-# Cargo en variables las columnas que deseo comparar
+# Cargo en variables las características del paciente sobre el que se genera el informe para incluirlas como variables que pasar al html
 volp = dfp['natvol'].iloc[0]
 dPCp = dfp['dPC'].iloc[0]
 latICLp = dfp['latICL'].iloc[0]
@@ -65,6 +63,8 @@ dPCPercp = dfp['dPCPerc'].iloc[0]
 dInfACPCp = dfp['dInfACPC'].iloc[0]
 VIMoccupiedp = dfp['VIMoccupied'].iloc[0]
 LesioninVIMp = dfp['LesioninVIM'].iloc[0]
+
+# SECCIÓN 3. Generación de los gráficos para la comparación estadística con una población de pacientes.
 
 # Leo los ficheros csv con información del otros pacientes
 df1 = pd.read_csv('outstats.txt')
@@ -252,7 +252,9 @@ plt.savefig('./Graficos/LesioninVIM_mejoria.png', dpi=200)
 env = Environment(loader=FileSystemLoader('.'))
 template = env.get_template("myreport.html")
 
-template_vars = {"document_title": "Informe automatizado de topografía de la lesión talámica mediante ultrasonido focal de alta intensidad", "title" : "Lesión Paciente X","imagenT2" : "ImagenT2_crop.png", "imagenT1" : "ImagenT1_crop.png", "imagenSWAN" : "ImagenSWAN_crop.png","imagenFLAIR" : "ImagenFLAIR_crop.png","mosaicoT2" : "MosaicoT2_crop.png","mosaicoT1" : "MosaicoT1_crop.png","mosaicoFLAIR" : "MosaicoFLAIR_crop.png","mosaicoSWAN" : "MosaicoSWAN_crop.png","Autor" : "Enrique"}
+template_vars = {"volumen": volp, "dPC": dPCp,"dPCPerc": dPCPercp, "latICL": latICLp,"dInfACPC": dInfACPCp,"VIMoccupied": VIMoccupiedp,"LesioninVIM": LesioninVIMp, "document_title": "Informe automatizado de topografía de la lesión talámica mediante ultrasonido focal de alta intensidad", "title" : "Lesión Paciente X","Autor" : "Enrique"}
+
+LesioninVIM = df['LesioninVIM']
 
 html_out = template.render(template_vars)
 #print(html_out)
