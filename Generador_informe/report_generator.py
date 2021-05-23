@@ -248,11 +248,139 @@ ax2.set_xlabel('Lesión en VIM (%)')
 
 plt.savefig('./Graficos/LesioninVIM_mejoria.png', dpi=200)
 
+# Comparo las características de la lesión con la aparición de ataxia y parestesia a los 3 meses
 
+df_atax = df[(df['Atax_3M'] == 1)] # Filtro por aquellos que tienen Ataxia
+df_natax = df[(df['Atax_3M'] == 0)] # Filtro por aquellos que NO tienen Ataxia
+df_pares = df[(df['Pares_3M'] == 1)] # Filtro por aquellos que tienen Ataxia
+df_npares = df[(df['Pares_3M'] == 0)] # Filtro por aquellos que NO tienen Ataxia
+
+# Figura 8: relación entre el volumen de la lesión y la aparición de ataxia y parestesia
+
+vol_atax = df_atax['natvol'].dropna()  # Extraigo el volumen de aquellos que tienen ataxia y elimino los valores NaN        
+vol_natax = df_natax['natvol'].dropna()
+vol_pares = df_pares['natvol'].dropna()  # Extraigo el volumen de aquellos que tienen ataxia y elimino los valores NaN        
+vol_npares = df_npares['natvol'].dropna()
+vol_ap = [vol_natax,vol_atax,vol_npares,vol_pares]
+  
+fig = plt.figure(figsize =(10, 7))
+plt.boxplot(vol_ap)
+plt.title("Relación entre el volumen de la lesión y la aparición de ataxia y parestesia")
+plt.ylabel('Volumen (mm3)')
+plt.axhline(y=volp, color = 'red')
+plt.xticks([1, 2, 3, 4], ['Sin ataxia', 'Con ataxia', 'Sin parestesia', 'Con parestesia'])
+
+plt.savefig('./Graficos/volumen_ataxia_parestesia.png', dpi=200)
+
+# Figura 9: relación entre la lateralidad y la aparición de ataxia y parestesia
+
+latICL_atax = df_atax['latICL'].dropna()       
+latICL_natax = df_natax['latICL'].dropna()
+latICL_pares = df_pares['latICL'].dropna()        
+latICL_npares = df_npares['latICL'].dropna()
+latICL_ap = [latICL_natax,latICL_atax,latICL_npares,latICL_pares]
+  
+fig = plt.figure(figsize =(10, 7))
+plt.boxplot(latICL_ap)
+plt.title("Relación entre la lateralidad de la lesión y la aparición de ataxia y parestesia")
+plt.ylabel('Lateralidad (mm)')
+plt.axhline(y=latICLp, color = 'red')
+plt.xticks([1, 2, 3, 4], ['Sin ataxia', 'Con ataxia', 'Sin parestesia', 'Con parestesia'])
+
+plt.savefig('./Graficos/latICL_ataxia_parestesia.png', dpi=200)
+
+# Figura 10: relación entre la distancia PC y la aparición de ataxia y parestesia
+
+dPC_atax = df_atax['dPC'].dropna()       
+dPC_natax = df_natax['dPC'].dropna()
+dPC_pares = df_pares['dPC'].dropna()        
+dPC_npares = df_npares['dPC'].dropna()
+dPC_ap = [dPC_natax,dPC_atax,dPC_npares,dPC_pares]
+  
+fig = plt.figure(figsize =(10, 7))
+plt.boxplot(dPC_ap)
+plt.title("Relación entre la distancia PC y la aparición de ataxia y parestesia")
+plt.ylabel('Distancia PC (mm)')
+plt.axhline(y=dPCp, color = 'red')
+plt.xticks([1, 2, 3, 4], ['Sin ataxia', 'Con ataxia', 'Sin parestesia', 'Con parestesia'])
+
+plt.savefig('./Graficos/dPC_ataxia_parestesia.png', dpi=200)
+
+# Figura 11: relación entre la distancia PC (%) y la aparición de ataxia y parestesia
+
+dPCPerc_atax = df_atax['dPCPerc'].dropna()       
+dPCPerc_natax = df_natax['dPCPerc'].dropna()
+dPCPerc_pares = df_pares['dPCPerc'].dropna()        
+dPCPerc_npares = df_npares['dPCPerc'].dropna()
+dPCPerc_ap = [dPCPerc_natax,dPCPerc_atax,dPCPerc_npares,dPCPerc_pares]
+  
+fig = plt.figure(figsize =(10, 7))
+plt.boxplot(dPCPerc_ap)
+plt.title("Relación entre la distancia PC (%) y la aparición de ataxia y parestesia")
+plt.ylabel('Distancia PC (%)')
+plt.axhline(y=dPCPercp, color = 'red')
+plt.xticks([1, 2, 3, 4], ['Sin ataxia', 'Con ataxia', 'Sin parestesia', 'Con parestesia'])
+
+plt.savefig('./Graficos/dPCPerc_ataxia_parestesia.png', dpi=200)
+
+# Figura 12: relación entre la distancia inferior al plano AC-PC y la aparición de ataxia y parestesia
+
+dInfACPC_atax = df_atax['dInfACPC'].dropna()       
+dInfACPC_natax = df_natax['dInfACPC'].dropna()
+dInfACPC_pares = df_pares['dInfACPC'].dropna()        
+dInfACPC_npares = df_npares['dInfACPC'].dropna()
+dInfACPC_ap = [dInfACPC_natax,dInfACPC_atax,dInfACPC_npares,dInfACPC_pares]
+  
+fig = plt.figure(figsize =(10, 7))
+plt.boxplot(dInfACPC_ap)
+plt.title("Relación entre la distancia inferior al plano AC-PC y la aparición de ataxia y parestesia")
+plt.ylabel('Distancia inferior AC-PC (mm)')
+plt.axhline(y=dInfACPCp, color = 'red')
+plt.xticks([1, 2, 3, 4], ['Sin ataxia', 'Con ataxia', 'Sin parestesia', 'Con parestesia'])
+
+plt.savefig('./Graficos/dInfACPC_ataxia_parestesia.png', dpi=200)
+
+# Figura 13: relación entre el VIM ocupado y la aparición de ataxia y parestesia
+
+VIMoccupied_atax = df_atax['VIMoccupied'].dropna()       
+VIMoccupied_natax = df_natax['VIMoccupied'].dropna()
+VIMoccupied_pares = df_pares['VIMoccupied'].dropna()        
+VIMoccupied_npares = df_npares['VIMoccupied'].dropna()
+VIMoccupied_ap = [VIMoccupied_natax,VIMoccupied_atax,VIMoccupied_npares,VIMoccupied_pares]
+  
+fig = plt.figure(figsize =(10, 7))
+plt.boxplot(VIMoccupied_ap)
+plt.title("Relación entre el VIM ocupado y la aparición de ataxia y parestesia")
+plt.ylabel('VIM ocupado (%)')
+plt.axhline(y=VIMoccupiedp, color = 'red')
+plt.xticks([1, 2, 3, 4], ['Sin ataxia', 'Con ataxia', 'Sin parestesia', 'Con parestesia'])
+
+plt.savefig('./Graficos/VIMoccupied_ataxia_parestesia.png', dpi=200)
+
+# Figura 14: relación entre la porción de lesión en el VIM y la aparición de ataxia y parestesia
+
+LesioninVIM_atax = df_atax['LesioninVIM'].dropna()       
+LesioninVIM_natax = df_natax['LesioninVIM'].dropna()
+LesioninVIM_pares = df_pares['LesioninVIM'].dropna()        
+LesioninVIM_npares = df_npares['LesioninVIM'].dropna()
+LesioninVIM_ap = [LesioninVIM_natax,LesioninVIM_atax,LesioninVIM_npares,LesioninVIM_pares]
+  
+fig = plt.figure(figsize =(10, 7))
+plt.boxplot(LesioninVIM_ap)
+plt.title("Relación entre la lesión en el VIM y la aparición de ataxia y parestesia")
+plt.ylabel('Lesión en VIM (%)')
+plt.axhline(y=LesioninVIMp, color = 'red')
+plt.xticks([1, 2, 3, 4], ['Sin ataxia', 'Con ataxia', 'Sin parestesia', 'Con parestesia'])
+
+plt.savefig('./Graficos/LesioninVIM_ataxia_parestesia.png', dpi=200)
+
+
+# Creación de los ficheros html y pdf
 env = Environment(loader=FileSystemLoader('.'))
 template = env.get_template("myreport.html")
 
-template_vars = {"volumen": volp, "dPC": dPCp,"dPCPerc": dPCPercp, "latICL": latICLp,"dInfACPC": dInfACPCp,"VIMoccupied": VIMoccupiedp,"LesioninVIM": LesioninVIMp, "document_title": "Informe automatizado de topografía de la lesión talámica mediante ultrasonido focal de alta intensidad", "title" : "Lesión Paciente X","Autor" : "Enrique"}
+# Pasamos las variables a la plantilla html
+template_vars = {"volumen": volp, "dPC": dPCp,"dPCPerc": dPCPercp, "latICL": latICLp,"dInfACPC": dInfACPCp,"VIMoccupied": VIMoccupiedp,"LesioninVIM": LesioninVIMp, "document_title": "Informe automatizado de topografía de la lesión talámica mediante ultrasonido focal de alta intensidad","Autor" : "Enrique"}
 
 LesioninVIM = df['LesioninVIM']
 
@@ -263,7 +391,7 @@ Html_file = open("report.html","w")
 Html_file.write(html_out)
 Html_file.close()
 
-options = {'enable-local-file-access': None}
+options = {'enable-local-file-access': None, 'footer-center': '[page]'}
 pdfkit.from_file('report.html', 'report.pdf',options = options)
 
 
